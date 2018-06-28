@@ -30,7 +30,7 @@ $(document).ready(function () {
 
     var correct = 0;
     var incorrect = 10 - correct;
-
+    var victoryCondition = 1;
 
     function endGame() {
         // correct, incorrect, 
@@ -42,8 +42,10 @@ $(document).ready(function () {
         if (choice[questionCounter][0] === answer[questionCounter]) {
             console.log("correct");
             questionCounter++;
-            generateGame();
-            if (questionCounter === 2) {
+            if (questionCounter < victoryCondition) {
+                generateGame();
+            }
+            if (questionCounter === victoryCondition + 1) {
                 endGame();
             }
         }
@@ -52,8 +54,10 @@ $(document).ready(function () {
         if (choice[questionCounter][1] === answer[questionCounter]) {
             console.log("correct");
             questionCounter++;
-            generateGame();
-            if (questionCounter === 2) {
+            if (questionCounter < victoryCondition) {
+                generateGame();
+            }
+            if (questionCounter === victoryCondition + 1) {
                 endGame();
             }
         }
@@ -62,8 +66,10 @@ $(document).ready(function () {
         if (choice[questionCounter][2] === answer[questionCounter]) {
             console.log("correct");
             questionCounter++;
-            generateGame();
-            if (questionCounter === 2) {
+            if (questionCounter < victoryCondition) {
+                generateGame();
+            }
+            if (questionCounter === victoryCondition + 1) {
                 endGame();
             }
         }
@@ -72,8 +78,10 @@ $(document).ready(function () {
         if (choice[questionCounter][3] === answer[questionCounter]) {
             console.log("correct");
             questionCounter++;
-            generateGame();
-            if (questionCounter === 2) {
+            if (questionCounter < victoryCondition) {
+                generateGame();
+            }
+            if (questionCounter === victoryCondition + 1) {
                 endGame();
             }
         }
@@ -81,7 +89,7 @@ $(document).ready(function () {
 
 
 
-    var counter = 3;
+    var counter = 10;
     function timer() {
         clock = setInterval(decrement, 1000);
         function decrement() {
@@ -91,13 +99,13 @@ $(document).ready(function () {
             if (counter === 0) {
                 clearInterval(clock);
                 console.log(questionCounter);
-                if (questionCounter === 1) {
+                if (questionCounter === victoryCondition) {
                     endGame();
                 }
-                if(questionCounter < 1) {
+                if(questionCounter < victoryCondition) {
                     questionCounter++;
                     generateGame();
-                    counter = 3;
+                    counter = 10;
                     timer();
                 }
                
