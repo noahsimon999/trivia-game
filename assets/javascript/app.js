@@ -3,8 +3,8 @@ $(document).ready(function () {
     var questionCounter = 0;
 
     var questions = [
-        "What does CSS stand for?",
-        "What does HTML stand for?"
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/X-47B_operating_in_the_Atlantic_Test_Range_%28modified%29.jpg/1200px-X-47B_operating_in_the_Atlantic_Test_Range_%28modified%29.jpg",
+        "http://im.rediff.com/news/2010/dec/09ss1.jpg"
     ];
 
     var choice = [
@@ -20,7 +20,7 @@ $(document).ready(function () {
 
 
     function generateGame() {
-        $(".question").html(questions[questionCounter]);
+        $(".question").html("<img src="+questions[questionCounter]+">");
         $(".choice1").html(choice[questionCounter][0]);
         $(".choice2").html(choice[questionCounter][1]);
         $(".choice3").html(choice[questionCounter][2]);
@@ -29,20 +29,39 @@ $(document).ready(function () {
 
 
     var correct = 0;
-    var incorrect = 10 - correct;
+    var incorrect = 0;
     var victoryCondition = 1;
 
     function endGame() {
         // correct, incorrect, 
+        $(".question").hide();
+        $(".choice1").hide();
+        $(".choice2").hide();
+        $(".choice3").hide();
+        $(".choice4").hide();
         $(".endGame").html("<p>You got " + correct + "correct</p>")
+        $(".endGame2").html("<p>You got " + incorrect + "incorrect</p>")
     }
 
 
     $(".choice1").click(function() {
         if (choice[questionCounter][0] === answer[questionCounter]) {
             console.log("correct");
+            correct++;
             questionCounter++;
-            if (questionCounter < victoryCondition) {
+            if (questionCounter <= victoryCondition) {
+                
+                
+                generateGame();
+            }
+            if (questionCounter === victoryCondition + 1) {
+                endGame();
+            }
+        } else {
+            console.log("incorrect");
+            incorrect++;
+            questionCounter++;
+            if (questionCounter <= victoryCondition) {
                 generateGame();
             }
             if (questionCounter === victoryCondition + 1) {
@@ -53,8 +72,19 @@ $(document).ready(function () {
     $(".choice2").click(function() {
         if (choice[questionCounter][1] === answer[questionCounter]) {
             console.log("correct");
+            correct++;
             questionCounter++;
-            if (questionCounter < victoryCondition) {
+            if (questionCounter <= victoryCondition) {
+                generateGame();
+            }
+            if (questionCounter === victoryCondition + 1) {
+                endGame();
+            }
+        } else {
+            console.log("incorrect");
+            incorrect++;
+            questionCounter++;
+            if (questionCounter <= victoryCondition) {
                 generateGame();
             }
             if (questionCounter === victoryCondition + 1) {
@@ -65,8 +95,19 @@ $(document).ready(function () {
     $(".choice3").click(function() {
         if (choice[questionCounter][2] === answer[questionCounter]) {
             console.log("correct");
+            correct++;
             questionCounter++;
-            if (questionCounter < victoryCondition) {
+            if (questionCounter <= victoryCondition) {
+                generateGame();
+            }
+            if (questionCounter === victoryCondition + 1) {
+                endGame();
+            }
+        } else {
+            console.log("incorrect");
+            incorrect++;
+            questionCounter++;
+            if (questionCounter <= victoryCondition) {
                 generateGame();
             }
             if (questionCounter === victoryCondition + 1) {
@@ -77,8 +118,19 @@ $(document).ready(function () {
     $(".choice4").click(function() {
         if (choice[questionCounter][3] === answer[questionCounter]) {
             console.log("correct");
+            correct++;
             questionCounter++;
-            if (questionCounter < victoryCondition) {
+            if (questionCounter <= victoryCondition) {
+                generateGame();
+            }
+            if (questionCounter === victoryCondition + 1) {
+                endGame();
+            }
+        } else {
+            console.log("incorrect");
+            incorrect++;
+            questionCounter++;
+            if (questionCounter <= victoryCondition) {
                 generateGame();
             }
             if (questionCounter === victoryCondition + 1) {
@@ -130,36 +182,7 @@ $(document).ready(function () {
 
 
 
-    // var questions = [
-    //     {
-    //         question: "What does CSS stand for?",
-    //         choice1: "Computer Style Sheet",
-    //         choice2: "Cascading Style Sheets",
-    //         choice3: "Caschading Style Sheet",
-    //         choice4: "Computer Style Sheets",
-    //         answer: "Cascading Style Sheets",
-    //         userAnswer: false
-    //     },
-    //     {
-    //         question: "What does HTML stand for?",
-    //         choice1: "Home Text Markup Language",
-    //         choice2: "House Text Markup Language",
-    //         choice3: "Hovel Text Markup Language",
-    //         choice4: "Hyper Text Markup Language",
-    //         answer: "Hyper Text Markup Language",
-    //         userAnswer: false
-    //     }
-    // ];
-
-    // for (var i = 0; i < questions.length; i++) {
-    //     // draw questions and choices
-    //     $(".question").html(questions[i].question);
-    //     $(".choice1").html(questions[i].choice1);
-    //     $(".choice2").html(questions[i].choice2);
-    //     $(".choice3").html(questions[i].choice3);
-    //     $(".choice4").html(questions[i].choice4);
-    // }
-
+   
 
 
     // display question
