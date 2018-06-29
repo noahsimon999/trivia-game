@@ -20,6 +20,7 @@ $(document).ready(function () {
 
 
     function generateGame() {
+        timer();
         $(".question").html("<img src="+questions[questionCounter]+">");
         $(".choice1").html(choice[questionCounter][0]);
         $(".choice2").html(choice[questionCounter][1]);
@@ -30,7 +31,7 @@ $(document).ready(function () {
 
     var correct = 0;
     var incorrect = 0;
-    var victoryCondition = 1;
+ 
 
     function endGame() {
         // correct, incorrect, 
@@ -39,9 +40,11 @@ $(document).ready(function () {
         $(".choice2").hide();
         $(".choice3").hide();
         $(".choice4").hide();
-        $(".endGame").html("<p>You got " + correct + "correct</p>")
-        $(".endGame2").html("<p>You got " + incorrect + "incorrect</p>")
+        $(".endGame").html("<p>You got " + correct + "correct</p>");
+        $(".endGame2").html("<p>You got " + incorrect + "incorrect</p>");
     }
+
+
 
 
     $(".choice1").click(function() {
@@ -50,9 +53,8 @@ $(document).ready(function () {
             correct++;
             questionCounter++;
             if (questionCounter <= victoryCondition) {
-                
-                
                 generateGame();
+                counter = 5;
             }
             if (questionCounter === victoryCondition + 1) {
                 endGame();
@@ -63,6 +65,7 @@ $(document).ready(function () {
             questionCounter++;
             if (questionCounter <= victoryCondition) {
                 generateGame();
+                counter = 5;
             }
             if (questionCounter === victoryCondition + 1) {
                 endGame();
@@ -76,6 +79,7 @@ $(document).ready(function () {
             questionCounter++;
             if (questionCounter <= victoryCondition) {
                 generateGame();
+                counter = 5;
             }
             if (questionCounter === victoryCondition + 1) {
                 endGame();
@@ -86,6 +90,7 @@ $(document).ready(function () {
             questionCounter++;
             if (questionCounter <= victoryCondition) {
                 generateGame();
+                counter = 5;
             }
             if (questionCounter === victoryCondition + 1) {
                 endGame();
@@ -98,7 +103,9 @@ $(document).ready(function () {
             correct++;
             questionCounter++;
             if (questionCounter <= victoryCondition) {
+                counter = 3;
                 generateGame();
+                counter = 5;
             }
             if (questionCounter === victoryCondition + 1) {
                 endGame();
@@ -109,6 +116,7 @@ $(document).ready(function () {
             questionCounter++;
             if (questionCounter <= victoryCondition) {
                 generateGame();
+                counter = 5;
             }
             if (questionCounter === victoryCondition + 1) {
                 endGame();
@@ -141,7 +149,9 @@ $(document).ready(function () {
 
 
 
-    var counter = 10;
+    var counter = 5;
+    var clock;
+    var victoryCondition = 1;
     function timer() {
         clock = setInterval(decrement, 1000);
         function decrement() {
@@ -150,18 +160,16 @@ $(document).ready(function () {
             }
             if (counter === 0) {
                 clearInterval(clock);
+                console.log(victoryCondition);
                 console.log(questionCounter);
-                if (questionCounter === victoryCondition) {
+                if (questionCounter >= victoryCondition) {
                     endGame();
                 }
                 if(questionCounter < victoryCondition) {
                     questionCounter++;
                     generateGame();
-                    counter = 10;
-                    timer();
+                    counter = 5;
                 }
-               
-                
             }
             $(".timer").html(counter);
         }
@@ -169,7 +177,6 @@ $(document).ready(function () {
 
 
     if(questionCounter < 10) {
-        timer();
         generateGame();
     }
 
