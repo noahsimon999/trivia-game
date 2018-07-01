@@ -3,23 +3,33 @@ $(document).ready(function () {
     var questionCounter = 0;
 
     var questions = [
-        "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/X-47B_operating_in_the_Atlantic_Test_Range_%28modified%29.jpg/1200px-X-47B_operating_in_the_Atlantic_Test_Range_%28modified%29.jpg",
-        "http://im.rediff.com/news/2010/dec/09ss1.jpg"
+        "assets/images/Angela_Merkel.jpg",
+        "assets/images/Donald_Trump.jpg",
+        "assets/images/Donald_Tusk.jpg",
+        "assets/images/Emmanuel_Macron.jpg",
+        "assets/images/Giuseppe_Conte.jpg",
+        "assets/images/Jean-Claude_Juncker.jpg",
+        "assets/images/Justin_Trudeau.jpg",
+        "assets/images/Shinzō_Abe.jpg",
+        "assets/images/Theresa_May.png"
+        
     ];
 
     var choice = [
-        ["Computer Style Sheet", "Cascading Style Sheets", "Caschading Style Sheet", "Computer Style Sheets"],
+        ["Annegret Kramp-Karrenbauer", "Julia Klöckner", "Angela Merkel", "Ursula Lehr"],
         ["Home Text Markup Language", "House Text Markup Language", "Hovel Text Markup Language", "Hyper Text Markup Language",]
     ];
 
     var answer = [
-        "Cascading Style Sheets",
+        "Angela Merkel",
         "Hyper Text Markup Language"
     ];
 
 
 
     function generateGame() {
+        $(".timer").show();
+        $(".timer").html("<p>Time Left: <span class='timeLeft'>5</span></p>")
         $(".question").show();
         $(".choice1").show();
         $(".choice2").show();
@@ -36,6 +46,8 @@ $(document).ready(function () {
 
     function right() {
         correct++;
+        clearInterval(clock);
+        $(".timer").hide();
         $(".question").hide();
         $(".choice1").hide();
         $(".choice2").hide();
@@ -49,6 +61,8 @@ $(document).ready(function () {
 
     function wrong() {
         incorrect++;
+        clearInterval(clock);
+        $(".timer").hide();
         $(".question").hide();
         $(".choice1").hide();
         $(".choice2").hide();
@@ -76,7 +90,7 @@ $(document).ready(function () {
 
 
 // starts game
-    if(questionCounter < 2) {
+    if(questionCounter <= 1) {
         generateGame();
         timer();
     }
@@ -103,7 +117,6 @@ $(document).ready(function () {
             right();
         } else {
             console.log("incorrect");
-            
             wrong();
         }
     })
@@ -151,7 +164,8 @@ $(document).ready(function () {
                 if(questionCounter < 1) {
                     wrong();
                 } else {
-                    endGame();
+                    wrong();
+                    setTimeout(endGame, 3000);
                 }
             }
             $(".timer").html(counter);
