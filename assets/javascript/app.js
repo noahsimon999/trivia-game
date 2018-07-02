@@ -43,9 +43,11 @@ $(document).ready(function () {
 
     function generateGame() {
         $(".start").hide();
+        $(".rules").hide();
         $(".timer").show();
         $(".timer").html("<p>Time Left: <span class='timeLeft'>15</span></p>")
         $(".question").show();
+        $(".question2").show();
         $(".choice1").show();
         $(".choice2").show();
         $(".choice3").show();
@@ -66,6 +68,7 @@ $(document).ready(function () {
         clearInterval(clock);
         $(".timer").hide();
         $(".question").show();
+        $(".question2").show();
         $(".choice1").hide();
         $(".choice2").hide();
         $(".choice3").hide();
@@ -83,6 +86,7 @@ $(document).ready(function () {
         clearInterval(clock);
         $(".timer").hide();
         $(".question").show();
+        $(".question2").show();
         $(".choice1").hide();
         $(".choice2").hide();
         $(".choice3").hide();
@@ -97,8 +101,11 @@ $(document).ready(function () {
 
     function endGame() {
         clearInterval(clock);
+        $(".start").show();
+        $(".start").append(" Play again?");
         $(".timer").hide();
         $(".question").hide();
+        $(".question2").hide();
         $(".choice1").hide();
         $(".choice2").hide();
         $(".choice3").hide();
