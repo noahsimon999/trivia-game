@@ -43,6 +43,8 @@ $(document).ready(function () {
 
     function generateGame() {
         $(".start").hide();
+        $(".restart").hide();
+        
         $(".rules").hide();
         $(".timer").show();
         $(".timer").html("<p>Time Left: <span class='timeLeft'>15</span></p>")
@@ -66,6 +68,7 @@ $(document).ready(function () {
     function right() {
         correct++;
         clearInterval(clock);
+        $(".restart").hide();
         $(".timer").hide();
         $(".question").show();
         $(".question2").show();
@@ -78,12 +81,14 @@ $(document).ready(function () {
         $(".endGame2").show();
         $(".results").html("<p>You are right!</p>");
         $(".endGame").html("<p>The correct answer is " + answer[questionCounter] + "</p>");
+        $(".endGame2").hide();
         setTimeout(transitionTime, 1000 * 3);
     }
 
     function wrong() {
         incorrect++;
         clearInterval(clock);
+        $(".restart").hide();
         $(".timer").hide();
         $(".question").show();
         $(".question2").show();
@@ -96,13 +101,14 @@ $(document).ready(function () {
         $(".endGame2").show();
         $(".results").html("<p>You are wrong!</p>");
         $(".endGame").html("<p>The correct answer is " + answer[questionCounter] + "</p>");
+        $(".endGame2").hide();
         setTimeout(transitionTime, 1000 * 3);
     }
 
     function endGame() {
         clearInterval(clock);
-        $(".start").show();
-        $(".start").append(" Play again?");
+        $(".restart").show();
+        $(".restart").html("<button class='restart'>Restart</button>");
         $(".timer").hide();
         $(".question").hide();
         $(".question2").hide();
@@ -138,6 +144,17 @@ $(document).ready(function () {
 
     var correct = 0;
     var incorrect = 0;
+
+//restart game
+$(".restart").click(function(){
+    correct = 0;
+    incorrect = 0;
+    counter = 15;
+    questionCounter = 0;
+    generateGame();
+    timer();
+})
+
     
 //listens for a click and checks the answer
     $(".choice1").click(function() {
