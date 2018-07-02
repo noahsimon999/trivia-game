@@ -17,29 +17,46 @@ $(document).ready(function () {
 
     var choice = [
         ["Annegret Kramp-Karrenbauer", "Julia Klöckner", "Angela Merkel", "Ursula Lehr"],
-        ["Home Text Markup Language", "House Text Markup Language", "Hovel Text Markup Language", "Hyper Text Markup Language",]
+        ["Donald Trump", "Barack Obama", "Rudy Giuliani", "Jeb Bush"],
+        ["Herman Van Rompuy", "Bronisław Komorowski", "Maciej Płażyński", "Donald Tusk"],
+        ["Édouard Philippe", "Emmanuel Macron", "	François Hollande", "Antoni Martí"],
+        ["Giuseppe Conte", "Sergio Mattarella", "Luigi Di Maio", "Paolo Gentiloni"],
+        ["Jean-Claude Juncker", "Herman Van Rompuy", "	Frans Timmermans", "José Manuel Barroso"],
+        [" Pierre Trudeau", "David Johnston", "Justin Trudeau", "Stephen Harper"],
+        ["Tarō Asō", "Shinzō Abe", "Junichirō Koizumi", "Yasuo Fukuda"],
+        ["Elizabeth II", "Harriet Harman", "Maria Miller", "Theresa May"],
     ];
 
     var answer = [
         "Angela Merkel",
-        "Hyper Text Markup Language"
+        "Donald Trump",
+        "Donald Tusk",
+        "Emmanuel Macron",
+        "Giuseppe Conte",
+        "Jean-Claude Juncker",
+        "Justin Trudeau",
+        "Shinzō Abe",
+        "Theresa May"
     ];
 
 
 
     function generateGame() {
+        $(".start").hide();
         $(".timer").show();
-        $(".timer").html("<p>Time Left: <span class='timeLeft'>5</span></p>")
+        $(".timer").html("<p>Time Left: <span class='timeLeft'>15</span></p>")
         $(".question").show();
         $(".choice1").show();
         $(".choice2").show();
         $(".choice3").show();
         $(".choice4").show();
         $(".question").html("<img src="+questions[questionCounter]+">");
+        $(".question2").html("<h3>Who is this?</h3>");
         $(".choice1").html(choice[questionCounter][0]);
         $(".choice2").html(choice[questionCounter][1]);
         $(".choice3").html(choice[questionCounter][2]);
         $(".choice4").html(choice[questionCounter][3]);
+        $(".results").hide();
         $(".endGame").hide();
         $(".endGame2").hide();
     }
@@ -48,13 +65,15 @@ $(document).ready(function () {
         correct++;
         clearInterval(clock);
         $(".timer").hide();
-        $(".question").hide();
+        $(".question").show();
         $(".choice1").hide();
         $(".choice2").hide();
         $(".choice3").hide();
         $(".choice4").hide();
+        $(".results").show();
         $(".endGame").show();
         $(".endGame2").show();
+        $(".results").html("<p>You are right!</p>");
         $(".endGame").html("<p>The correct answer is " + answer[questionCounter] + "</p>");
         setTimeout(transitionTime, 1000 * 3);
     }
@@ -63,13 +82,15 @@ $(document).ready(function () {
         incorrect++;
         clearInterval(clock);
         $(".timer").hide();
-        $(".question").hide();
+        $(".question").show();
         $(".choice1").hide();
         $(".choice2").hide();
         $(".choice3").hide();
         $(".choice4").hide();
+        $(".results").show();
         $(".endGame").show();
         $(".endGame2").show();
+        $(".results").html("<p>You are wrong!</p>");
         $(".endGame").html("<p>The correct answer is " + answer[questionCounter] + "</p>");
         setTimeout(transitionTime, 1000 * 3);
     }
@@ -82,24 +103,25 @@ $(document).ready(function () {
         $(".choice2").hide();
         $(".choice3").hide();
         $(".choice4").hide();
+        $(".results").hide();
         $(".endGame").show();
         $(".endGame2").show();
-        $(".endGame").html("<p>You got " + correct + "correct</p>");
-        $(".endGame2").html("<p>You got " + incorrect + "incorrect</p>");
+        $(".endGame").html("<p>You got " + correct + " correct</p>");
+        $(".endGame2").html("<p>You got " + incorrect + " incorrect</p>");
     }
 
 
 // starts game
-    if(questionCounter <= 1) {
+    $(".start").click(function(){
         generateGame();
         timer();
-    }
+    })
 // moves the game forward
     function transitionTime() {
-        if (questionCounter < 1) {
+        if (questionCounter < 8) {
             questionCounter++;
             generateGame();
-            counter = 5;
+            counter = 15;
             timer();
         }
         else {
@@ -150,7 +172,7 @@ $(document).ready(function () {
     
 
 // countdown timer used on every question
-    var counter = 5;
+    var counter = 15;
     var clock;
     function timer() {
         clock = setInterval(decrement, 1000);
@@ -161,14 +183,14 @@ $(document).ready(function () {
             if (counter <= 0) {
                 clearInterval(clock);
                 console.log(questionCounter);
-                if(questionCounter < 1) {
+                if(questionCounter < 8) {
                     wrong();
                 } else {
                     wrong();
                     setTimeout(endGame, 3000);
                 }
             }
-            $(".timer").html(counter);
+            $(".timer").html("<p>Time Left: <span class='timeLeft'>" + counter + "</span></p>");
         }
     }
 
