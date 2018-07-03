@@ -1,6 +1,6 @@
 body {
     font-family: 'Courier New', Courier, monospace;
-    background-image: URL(/assets/images/g8.jpg);
+    background-image: URL(../../assets/images/g7-2018.jpg);
 }
 
 h1 {
@@ -29,9 +29,16 @@ img {
 }
 
 .container {
-    text-align: center;
-
+    text-align: center;   
+    color: white; 
 }
+
+.game {
+    background-color: grey;
+    opacity: .95;
+    color: white;
+}
+
 
 .rules {
     line-height: 2em;
