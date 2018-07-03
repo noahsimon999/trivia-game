@@ -39,7 +39,7 @@ $(document).ready(function () {
         "Theresa May"
     ];
 
-
+    var winSound = new Audio("assets/soundEffects/applause.wav");
 
     function generateGame() {
         $(".start").hide();
@@ -54,6 +54,7 @@ $(document).ready(function () {
         $(".choice2").show();
         $(".choice3").show();
         $(".choice4").show();
+        $(".spacer").css("padding-bottom", "40px");
         $(".question").html("<img src="+questions[questionCounter]+">");
         $(".question2").html("<h3>Who is this?</h3>");
         $(".choice1").html(choice[questionCounter][0]);
@@ -63,6 +64,8 @@ $(document).ready(function () {
         $(".results").hide();
         $(".endGame").hide();
         $(".endGame2").hide();
+        $(".endGame").css("font-size", "1em");
+        $(".endGame2").css("font-size", "1em");
     }
 
     function right() {
@@ -76,6 +79,7 @@ $(document).ready(function () {
         $(".choice2").hide();
         $(".choice3").hide();
         $(".choice4").hide();
+        $(".spacer").hide();
         $(".results").show();
         $(".endGame").show();
         $(".endGame").css("padding-bottom", "40px");
@@ -97,6 +101,7 @@ $(document).ready(function () {
         $(".choice2").hide();
         $(".choice3").hide();
         $(".choice4").hide();
+        $(".spacer").hide();
         $(".results").show();
         $(".endGame").show();
         $(".endGame").css("padding-bottom", "40px");
@@ -110,7 +115,8 @@ $(document).ready(function () {
     function endGame() {
         clearInterval(clock);
         $(".restart").show();
-        $(".restart").html("<button class='restart'>Restart</button>");
+        $(".restart").html("<button class='restart'>Play Again?</button>");
+        $(".restart").css("margin-bottom", "20px");
         $(".timer").hide();
         $(".question").hide();
         $(".question2").hide();
@@ -122,8 +128,16 @@ $(document).ready(function () {
         $(".endGame").css("padding-bottom", "0px");
         $(".endGame").show();
         $(".endGame2").show();
+        $(".endGame").css("font-size", "20px");
+        $(".endGame2").css("font-size", "20px");
         $(".endGame").html("<p>You got " + correct + " correct</p>");
         $(".endGame2").html("<p>You got " + incorrect + " incorrect</p>");
+        percentage = Math.round((correct/(questionCounter+1))* 100);
+        $(".endGame2").append("<p>You scored a " + percentage + "%</p>");
+        if(percentage === 100) {
+            winSound.play();
+        };
+        $(".endGame2").append("<a href='https://ajschilt86.github.io/TriviaGame/'>Click here to play state triva!</a>");
     }
 
 
@@ -147,6 +161,7 @@ $(document).ready(function () {
 
     var correct = 0;
     var incorrect = 0;
+    var percentage = 0;
 
 //restart game
 $(".restart").click(function(){

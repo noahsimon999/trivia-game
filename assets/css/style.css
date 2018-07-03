@@ -15,6 +15,8 @@ h1 {
     margin-right: 0;
     font-weight: bold;
     line-height: 0em;
+    text-decoration: underline;
+    box-shadow: 2px 2px 3px;
 }
 
 h3 {
@@ -37,8 +39,8 @@ img {
 }
 
 .info {
-    background-color: grey;
-    opacity: .95;
+    background-color: black;
+    opacity: .9;
     color: white;
     width: 40%;
     height: 100%;
@@ -48,8 +50,8 @@ img {
 }
 
 .game {
-    background-color: grey;
-    opacity: .95;
+    background-color: black;
+    opacity: .9;
     color: white;
     width: 40%;
     height: 100%;
@@ -80,15 +82,16 @@ img {
     animation-iteration-count: infinite;
 }
 
-.spacer {
-    padding-bottom: 40px;
-}
 
 .choice1:hover, .choice2:hover, .choice3:hover, .choice4:hover {
     background-color: blue;
     color: white;
+    border-radius: 5px;
 }
 
+.endGame2 a {
+    color: white;
+}
 
 
 /* Animations */
@@ -128,13 +131,11 @@ img {
   
 
 @keyframes startBtn {
-25%   {background-color: white;
+0%   {background-color: white;
         color:black;}
 50%  {background-color: blue;
         color: white;}
-75%  {background-color: white;
+100%  {background-color: white;
         color: black;}
-100% {background-color: blue;
-        color: white;}
 }
   
