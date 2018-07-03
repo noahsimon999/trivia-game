@@ -129,7 +129,7 @@ $(document).ready(function () {
         $(".endGame").show();
         $(".endGame2").show();
         $(".endGame").css("font-size", "20px");
-        $(".endGame2").css("font-size", "20px");
+        $(".endGame2").css("font-size", "20px").css("margin-bottom", "40px");
         $(".endGame").html("<p>You got " + correct + " correct</p>");
         $(".endGame2").html("<p>You got " + incorrect + " incorrect</p>");
         percentage = Math.round((correct/(questionCounter+1))* 100);

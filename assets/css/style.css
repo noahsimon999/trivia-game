@@ -3,21 +3,17 @@ body {
     background-image: URL(../images/g7-2018.jpg);
     height: 100%; 
     background-size: cover;
-
 }
 
 h1 {
     display: block;
     font-size: 4em;
-    margin-top: 0.67em;
-    margin-bottom: 0.67em;
-    margin-left: 0;
-    margin-right: 0;
+    margin: .67em auto;
     font-weight: bold;
-    line-height: 0em;
     text-decoration: underline;
-    box-shadow: 2px 2px 3px;
+    height: 100%;
 }
+
 
 h3 {
     display: block;
@@ -33,14 +29,14 @@ img {
     height: 200px;
 }
 
+
 .container {
     text-align: center;   
     color: white; 
 }
 
 .info {
-    background-color: black;
-    opacity: .9;
+    background-color: rgba(0,0,0,0.9);
     color: white;
     width: 40%;
     height: 100%;
@@ -50,15 +46,13 @@ img {
 }
 
 .game {
-    background-color: black;
-    opacity: .9;
+    background-color: rgba(0,0,0,0.9);
     color: white;
     width: 40%;
     height: 100%;
     margin: auto;
     padding: 30px 10px 10px 10px;
 }
-
 
 .rules {
     line-height: 2em;
