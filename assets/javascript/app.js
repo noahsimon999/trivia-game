@@ -44,7 +44,7 @@ $(document).ready(function () {
     function generateGame() {
         $(".start").hide();
         $(".restart").hide();
-        
+        $(".info").hide();
         $(".rules").hide();
         $(".timer").show();
         $(".timer").html("<p>Time Left: <span class='timeLeft'>15</span></p>")
@@ -78,6 +78,7 @@ $(document).ready(function () {
         $(".choice4").hide();
         $(".results").show();
         $(".endGame").show();
+        $(".endGame").css("padding-bottom", "40px");
         $(".endGame2").show();
         $(".results").html("<p>You are right!</p>");
         $(".endGame").html("<p>The correct answer is " + answer[questionCounter] + "</p>");
@@ -98,6 +99,7 @@ $(document).ready(function () {
         $(".choice4").hide();
         $(".results").show();
         $(".endGame").show();
+        $(".endGame").css("padding-bottom", "40px");
         $(".endGame2").show();
         $(".results").html("<p>You are wrong!</p>");
         $(".endGame").html("<p>The correct answer is " + answer[questionCounter] + "</p>");
@@ -117,6 +119,7 @@ $(document).ready(function () {
         $(".choice3").hide();
         $(".choice4").hide();
         $(".results").hide();
+        $(".endGame").css("padding-bottom", "0px");
         $(".endGame").show();
         $(".endGame2").show();
         $(".endGame").html("<p>You got " + correct + " correct</p>");
